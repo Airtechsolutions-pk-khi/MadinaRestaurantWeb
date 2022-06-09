@@ -1,0 +1,357 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{91B8BAFB-CBEF-4011-9C7B-17A7EBEFDDAC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MadinaRestaurant</RootNamespace>
+    <AssemblyName>MadinaRestaurant</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\animate.min.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\fontawesome.min.css" />
+    <Content Include="assets\css\jquery-ui.min.css" />
+    <Content Include="assets\css\magnific.min.css" />
+    <Content Include="assets\css\nice-select.min.css" />
+    <Content Include="assets\css\owl.min.css" />
+    <Content Include="assets\css\remixicon\remixicon.css" />
+    <Content Include="assets\css\remixicon\remixicon.svg" />
+    <Content Include="assets\css\remixicon\remixicon.symbol.svg" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\css\slick-slide.min.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\fonts\globe-solid.svg" />
+    <Content Include="assets\fonts\line-awesome.svg" />
+    <Content Include="assets\img\ad.png" />
+    <Content Include="assets\img\ajax-loader.gif" />
+    <Content Include="assets\img\banner\banner.png" />
+    <Content Include="assets\img\banner\bg-img-2.png" />
+    <Content Include="assets\img\banner\bg-img.png" />
+    <Content Include="assets\img\banner\shape-1.png" />
+    <Content Include="assets\img\banner\shape-2.png" />
+    <Content Include="assets\img\blog\1.png" />
+    <Content Include="assets\img\blog\2.png" />
+    <Content Include="assets\img\blog\3.png" />
+    <Content Include="assets\img\blog\4.png" />
+    <Content Include="assets\img\blog\5.png" />
+    <Content Include="assets\img\blog\6.png" />
+    <Content Include="assets\img\blog\comment.png" />
+    <Content Include="assets\img\blog\single-2.png" />
+    <Content Include="assets\img\blog\single-3.png" />
+    <Content Include="assets\img\blog\single.png" />
+    <Content Include="assets\img\category\1.png" />
+    <Content Include="assets\img\category\2.png" />
+    <Content Include="assets\img\category\3.png" />
+    <Content Include="assets\img\category\4.png" />
+    <Content Include="assets\img\category\5.png" />
+    <Content Include="assets\img\category\6.png" />
+    <Content Include="assets\img\fevicon.png" />
+    <Content Include="assets\img\home-2\about\1.png" />
+    <Content Include="assets\img\home-2\about\bg.png" />
+    <Content Include="assets\img\home-2\banner\1.png" />
+    <Content Include="assets\img\home-2\banner\bg.png" />
+    <Content Include="assets\img\home-2\icon\calendar.png" />
+    <Content Include="assets\img\home-2\icon\map-marker.png" />
+    <Content Include="assets\img\home-2\icon\phone-2.png" />
+    <Content Include="assets\img\home-2\icon\phone.png" />
+    <Content Include="assets\img\home-2\icon\shopping-cart.png" />
+    <Content Include="assets\img\home-2\instagram\1.png" />
+    <Content Include="assets\img\home-2\instagram\2.png" />
+    <Content Include="assets\img\home-2\instagram\3.png" />
+    <Content Include="assets\img\home-2\instagram\4.png" />
+    <Content Include="assets\img\home-2\instagram\5.png" />
+    <Content Include="assets\img\home-2\logo.png" />
+    <Content Include="assets\img\home-2\offer\1.png" />
+    <Content Include="assets\img\home-2\offer\2.png" />
+    <Content Include="assets\img\home-2\offer\3.png" />
+    <Content Include="assets\img\home-2\offer\4.png" />
+    <Content Include="assets\img\home-2\product\01.png" />
+    <Content Include="assets\img\home-2\product\02.png" />
+    <Content Include="assets\img\home-2\product\03.png" />
+    <Content Include="assets\img\home-2\product\04.png" />
+    <Content Include="assets\img\home-2\product\05.png" />
+    <Content Include="assets\img\home-2\product\06.png" />
+    <Content Include="assets\img\home-2\product\07.png" />
+    <Content Include="assets\img\home-2\product\08.png" />
+    <Content Include="assets\img\home-2\testimonial\qoute.png" />
+    <Content Include="assets\img\home-2\testimonial\testimonial.png" />
+    <Content Include="assets\img\home-3\banner-bg.png" />
+    <Content Include="assets\img\home-3\envelope.png" />
+    <Content Include="assets\img\home-3\location.png" />
+    <Content Include="assets\img\home-3\logo-2.png" />
+    <Content Include="assets\img\home-3\logo.png" />
+    <Content Include="assets\img\home-3\phone.png" />
+    <Content Include="assets\img\icon\1.png" />
+    <Content Include="assets\img\icon\2.png" />
+    <Content Include="assets\img\icon\3.png" />
+    <Content Include="assets\img\icon\4.png" />
+    <Content Include="assets\img\icon\envelope.png" />
+    <Content Include="assets\img\icon\location.png" />
+    <Content Include="assets\img\icon\paypal-card.png" />
+    <Content Include="assets\img\icon\peyment-card.png" />
+    <Content Include="assets\img\icon\phone.png" />
+    <Content Include="assets\img\instagram\1.png" />
+    <Content Include="assets\img\instagram\2.png" />
+    <Content Include="assets\img\instagram\3.png" />
+    <Content Include="assets\img\instagram\4.png" />
+    <Content Include="assets\img\instagram\5.png" />
+    <Content Include="assets\img\instagram\6.png" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\offer\03.png" />
+    <Content Include="assets\img\offer\1.png" />
+    <Content Include="assets\img\offer\2.png" />
+    <Content Include="assets\img\offer\3.png" />
+    <Content Include="assets\img\offer\offer.png" />
+    <Content Include="assets\img\other\about-2.png" />
+    <Content Include="assets\img\other\about.png" />
+    <Content Include="assets\img\other\featured.png" />
+    <Content Include="assets\img\other\location.png" />
+    <Content Include="assets\img\other\video.png" />
+    <Content Include="assets\img\product\burger\1.png" />
+    <Content Include="assets\img\product\burger\2.png" />
+    <Content Include="assets\img\product\pizza\1.png" />
+    <Content Include="assets\img\product\pizza\2.png" />
+    <Content Include="assets\img\product\pizza\3.png" />
+    <Content Include="assets\img\product\pizza\4.png" />
+    <Content Include="assets\img\product\pizza\5.png" />
+    <Content Include="assets\img\product\pizza\6.png" />
+    <Content Include="assets\img\shop\1.png" />
+    <Content Include="assets\img\shop\2.png" />
+    <Content Include="assets\img\shop\3.png" />
+    <Content Include="assets\img\shop\4.png" />
+    <Content Include="assets\img\shop\5.png" />
+    <Content Include="assets\img\shop\single-1.png" />
+    <Content Include="assets\img\shop\single-2.png" />
+    <Content Include="assets\img\shop\single-3.png" />
+    <Content Include="assets\img\shop\single-4.png" />
+    <Content Include="assets\img\shop\single-5.png" />
+    <Content Include="assets\img\testimonial\1.png" />
+    <Content Include="assets\img\widget\01.png" />
+    <Content Include="assets\img\widget\02.png" />
+    <Content Include="assets\img\widget\03.png" />
+    <Content Include="assets\img\widget\04.png" />
+    <Content Include="assets\img\widget\1.png" />
+    <Content Include="assets\img\widget\2.png" />
+    <Content Include="assets\img\widget\3.png" />
+    <Content Include="assets\img\widget\4.png" />
+    <Content Include="assets\img\widget\ad.png" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\counterup.js" />
+    <Content Include="assets\js\demos.js" />
+    <Content Include="assets\js\fontawesome.min.js" />
+    <Content Include="assets\js\imageloded.min.js" />
+    <Content Include="assets\js\isotope.pkgd.min.js" />
+    <Content Include="assets\js\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery.3.6.min.js" />
+    <Content Include="assets\js\magnific.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\nice-select.min.js" />
+    <Content Include="assets\js\owl.min.js" />
+    <Content Include="assets\js\ripple.js" />
+    <Content Include="assets\js\slick-slider.min.js" />
+    <Content Include="assets\js\tweenmax.min.js" />
+    <Content Include="assets\js\waypoint.js" />
+    <Content Include="assets\js\wow.min.js" />
+    <Content Include="assets\webfonts\fa-brands-400.svg" />
+    <Content Include="assets\webfonts\fa-regular-400.svg" />
+    <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DataTableEntensions.cs" />
+    <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\LINQtoDataTable.cs" />
+    <Compile Include="Helpers\ListExtensions.cs" />
+    <Compile Include="Models\BLL\itemBLL.cs" />
+    <Compile Include="Models\BLL\productBLL.cs" />
+    <Compile Include="Models\Service\baseService.cs" />
+    <Compile Include="Models\Service\itemService.cs" />
+    <Compile Include="Models\Service\productService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="assets\css\remixicon\.keep" />
+    <Content Include="assets\css\remixicon\.keep 3" />
+    <Content Include="assets\css\remixicon\remixicon.eot" />
+    <Content Include="assets\css\remixicon\remixicon.glyph.json" />
+    <Content Include="assets\css\remixicon\remixicon.less" />
+    <Content Include="assets\css\remixicon\remixicon.ttf" />
+    <Content Include="assets\css\remixicon\remixicon.woff" />
+    <Content Include="assets\css\remixicon\remixicon.woff2" />
+    <Content Include="assets\fonts\line-awesome.eot" />
+    <Content Include="assets\fonts\line-awesome.ttf" />
+    <Content Include="assets\fonts\line-awesome.woff" />
+    <Content Include="assets\fonts\line-awesome.woff2" />
+    <Content Include="assets\sass\global\_common.scss" />
+    <Content Include="assets\sass\global\_global.scss" />
+    <Content Include="assets\sass\global\_mixins.scss" />
+    <Content Include="assets\sass\global\_variables.scss" />
+    <Content Include="assets\sass\sections\_blog.scss" />
+    <Content Include="assets\sass\sections\_content.scss" />
+    <Content Include="assets\sass\sections\_footer.scss" />
+    <Content Include="assets\sass\sections\_home-2.scss" />
+    <Content Include="assets\sass\sections\_home-3.scss" />
+    <Content Include="assets\sass\sections\_navbar.scss" />
+    <Content Include="assets\sass\sections\_shop.scss" />
+    <Content Include="assets\sass\sections\_widgets.scss" />
+    <Content Include="assets\sass\style.scss" />
+    <Content Include="assets\webfonts\fa-brands-400.eot" />
+    <Content Include="assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="assets\webfonts\fa-brands-400.woff" />
+    <Content Include="assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="assets\webfonts\fa-regular-400.eot" />
+    <Content Include="assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="assets\webfonts\fa-regular-400.woff" />
+    <Content Include="assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="assets\webfonts\fa-solid-900.eot" />
+    <Content Include="assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="assets\webfonts\fa-solid-900.woff" />
+    <Content Include="assets\webfonts\fa-solid-900.woff2" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Aboutus.cshtml" />
+    <Content Include="Views\Home\Contactus.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60033</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
