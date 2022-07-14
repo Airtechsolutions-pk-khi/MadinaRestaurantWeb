@@ -14,7 +14,7 @@ namespace MadinaRestaurant.Models.BLL
     {
         public int ItemID { get; set; }
         public int? Stars { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
          public string Color { get; set; }
         public string[] arrColor { get; set; }
@@ -68,7 +68,7 @@ namespace MadinaRestaurant.Models.BLL
                 List<ReviewsBLL> lstR = new List<ReviewsBLL>();
                 SqlParameter[] p = new SqlParameter[1];
                 p[0] = new SqlParameter("@ItemID", ItemID);
-                _ds = (new DBHelper().GetDatasetFromSP)("sp_ProductDetails", p);
+                _ds = (new DBHelper().GetDatasetFromSP)("sp_ProductDetails_Web", p);
                 if (_ds != null)
                 {
                     if (_ds.Tables.Count > 0)
@@ -76,17 +76,17 @@ namespace MadinaRestaurant.Models.BLL
                         if (_ds.Tables[0] != null)
                         {
                             obj = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[0])).ToObject<List<productBLL>>().FirstOrDefault();
-                            obj.DiscountedPrice = obj.DiscountedPrice ?? 0;
+                            //obj.DiscountedPrice = obj.DiscountedPrice ?? 0;
                         }
+                        //if (_ds.Tables[1] != null)
+                        //{
+                        //    lstIM = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[1])).ToObject<List<ItemImages>>();
+                        //}
                         if (_ds.Tables[1] != null)
                         {
-                            lstIM = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[1])).ToObject<List<ItemImages>>();
+                            lstR = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[1])).ToObject<List<ReviewsBLL>>();
                         }
-                        if (_ds.Tables[2] != null)
-                        {
-                            lstR = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[2])).ToObject<List<ReviewsBLL>>();
-                        }
-                        obj.ImgList = lstIM;
+                        //obj.ImgList = lstIM;
                         obj.Reviews = lstR;
                     }
                 }
@@ -112,7 +112,7 @@ namespace MadinaRestaurant.Models.BLL
                 p[4] = new SqlParameter("@Stars", data.Stars);
                 p[5] = new SqlParameter("@StatusID", data.StatusID);
                 p[6] = new SqlParameter("@ItemID", data.ItemID);
-                return int.Parse(new DBHelper().GetTableFromSP("sp_InsertReview", p).Rows[0]["ID"].ToString());
+                return int.Parse(new DBHelper().GetTableFromSP("sp_InsertReview_Web", p).Rows[0]["ID"].ToString());
                 
             }
             catch (Exception ex)

@@ -15,7 +15,7 @@ namespace MadinaRestaurant.Models.BLL
     {
         public int ItemID { get; set; }
         public int? Stars { get; set; }
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string ArabicTitle { get; set; }
         public string SKU { get; set; }
         public string Description { get; set; }
@@ -64,7 +64,7 @@ namespace MadinaRestaurant.Models.BLL
             try
             {
                 var lst = new List<itemBLL>();
-                _dt = (new DBHelper().GetTableFromSP)("sp_itemListselected");
+                _dt = (new DBHelper().GetTableFromSP)("sp_itemListselected_Web");
                 if (_dt != null)
                 {
                     if (_dt.Rows.Count > 0)

@@ -1,0 +1,284 @@
+﻿
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        .single-item-wrap .wrap-details {
+            margin-top: 35px !important;
+        }
+
+        .single-item-wrap .thumb {
+            text-align: center;
+            padding-left: 20px;
+        }
+        #a {
+            display: none;
+        }
+        .single-item-wrap .thumb a {
+            position: relative;
+            top: 18px;
+            right: 27px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<!-- bredcrumb Area Start-->
+<section class="breadcrumb-area">
+    <div class="banner-bg-img"></div>
+    <div class="banner-shape-1"><img src="~/assets/img/banner/shape-1.png" alt="img"></div>
+    <div class="banner-shape-2"><img src="~/assets/img/banner/shape-2.png" alt="img"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 align-self-center">
+                <div class="banner-inner text-center">
+                    <h3>
+                        Choose you items
+                    </h3>
+                    <h1>SHOP PAGE</h1>
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- breadcrumb Area End -->
+<!-- shop Area Start-->
+<section class="shop-area pd-top-120 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 align-self-center pb-4">
+                        @*<p class="mb-0">Showing 1–8 of 12 results</p>*@
+                    </div>
+                    <div class="col-sm-6 align-self-center pb-4">
+                        @*<select class="single-select float-sm-end">
+                            <option>Default sorting</option>
+                            <option value="asc">Pizza</option>
+                            <option value="desc">Burger</option>
+                            <option value="pop">Ramen</option>
+                        </select>*@
+                    </div>
+                    <div class="tab-content" id="pills-tabContent">
+
+                    </div>
+
+                    @foreach (var item in ViewBag.BestProduct)
+                    {
+                        <div class="col-md-4 hideDiv">
+                            <div class="single-item-wrap">
+                                <div class="thumb">
+                                   
+                                    <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
+                                    <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                                </div>
+                                <div class="wrap-details">
+                                    <h5><a href="single-product.html">@item.Name</a></h5>
+                                    <div class="wrap-footer">
+                                        <div class="rating">
+                                            4.9
+                                            <span class="rating-inner">
+                                                <i class="ri-star-fill ps-0"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-line pe-0"></i>
+                                            </span>
+
+                                        </div>
+                                        <h6 class="price" style="font-size:18px;">Rs. @item.Price</h6>
+                                    </div>
+                                </div>
+                                <div class="btn-area">
+                                   
+                                    <a class="btn btn-secondary" href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">Add to Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-first">
+                <div class="sidebar-area">
+                    <div class="widget widget_search">
+                        <form class="search-form">
+                            <div class="form-group">
+                                @*<input type="text" class="filterOn" id="txtSearch" onchange="txtSearch" placeholder="Search your itmes">*@
+                                <input type="text" placeholder="Search your itmes">
+                            </div>
+                            <button class="submit-btn" type="submit"><i class="ri-search-line"></i></button>
+                            </form>
+</div>
+                    <div class="widget widget_categories style-2">
+                        <h4 class="widget-title" style="color:var(--heading-color);">Categories</h4>
+                        <ul>
+                            @foreach (var item in ViewBag.Category)
+                            {
+                                <li>
+                                    <label class=" form-check-label"><i><img src="~/assets/img/category/1.png" alt="img"></i>
+                                        <input type="checkbox" name="Category" id="a" value="@item.CategoryID" class="form-check-input " autocomplete="off"> @item.Name
+                                        
+                                    </label>
+                                </li>
+
+                                @*<li><a href="#"><img src="~/assets/img/category/1.png" alt="img"> Ramen <span>(5)</span></a></li>*@
+                            }
+
+                        </ul>
+                    </div>
+                    @*<div class="widget widget_filter">
+                        <h4 class="widget-title">Filter by Price</h4>
+                        <div class="side-bar-range">
+                            <div id="slider-range"></div>
+                            <div class="row g-0">
+                                <div class="col-lg-6 align-self-center">
+                                    <a class="btn btn-base" href="#">Filter</a>
+                                </div>
+                                <div class="col-lg-6 align-self-center">
+                                    <p>
+                                        Price:
+                                        <input type="text" id="amount" readonly>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="widget widget-recent-post style-2">
+                        <h4 class="widget-title"style="color:var(--heading-color);">Today’s Special</h4>
+                        <ul>
+                            @foreach (var item in ViewBag.TodaysSpecial)
+                            {
+
+
+                            <li>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="Image" style="width:90px;">
+                                    </div>
+                                    <div class="media-body">
+                                        <h6 class="title"><a href="#">@item.Name</a></h6>
+                                        @*<div class="rating">
+                                            4.9
+                                            <span class="rating-inner">
+                                                <i class="ri-star-fill ps-0"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-line pe-0"></i>
+                                            </span>
+                                            (462)
+                                        </div>*@
+                                        <h6 class="price">Rs. @item.Price</h6>
+                                    </div>
+                                </div>
+                            </li>
+                            }
+                            
+                        </ul>
+                    </div>
+                     
+                </div>
+            </div>
+            @*<div class="col-12">
+                <nav class="text-end">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="ri-arrow-left-s-line"></i>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>*@
+        </div>
+    </div>
+</section>
+<!-- shop Area End -->
+<script>
+      $("#pills-tabContent").load('@Url.Action("Products", "Home")');
+    $("#divLoader").hide();
+
+    var Category = [];
+
+    $('input[name="Category"]').click(function () {
+
+        if ($(this).prop("checked") == true) {
+            $('.hideDiv').hide();
+            Category.push($(this).val());
+
+            ProductFilter(Category.join());
+        }
+        else {
+            $('.hideDiv').show();
+            var index = Category.indexOf($(this).val());
+            Category.splice(index, 1);
+
+            ProductFilter(Category.join());
+        }
+    });
+
+    //$(".filterOn").change(function () {
+    //    var Searchtxt = "";
+    //    if ($("#txtSearch").val() != null && $("#txtSearch").val() != '') {
+    //        Searchtxt = $("#txtSearch").val();
+    //        alert(Searchtxt)
+    //        ProductFilter(Category.join(),Searchtxt)
+    //    }
+   
+
+    function ProductFilter(Category, Searchtxt) {
+        $("#divLoader").show();
+        $("#pills-tabContent").hide();
+
+        var filter = new Object();
+        filter.Category = Category;
+        filter.Searchtxt = Searchtxt;
+
+        var FilterData = JSON.stringify(filter);
+        $.ajax({
+            type: "POST",
+            url: '../Home/Filter',
+            data: FilterData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (obj) {
+                $.ajax({
+                    type: "POST",
+                    url: '../Home/Products',
+                    data: JSON.stringify(obj.data),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'html',
+                    success: function (data) {
+
+                        $("#divLoader").hide();
+                        $("#pills-tabContent").show();
+                        $("#pills-tabContent").html(data);
+
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+
+                    }
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                //
+            }
+        });
+        }
+    //});
+</script>

@@ -1,0 +1,508 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+    </style>
+</head>
+<!-- bredcrumb Area Start-->
+<section class="breadcrumb-area">
+    <div class="banner-bg-img"></div>
+    <div class="banner-shape-1"><img src="~/assets/img/banner/shape-1.png" alt="img"></div>
+    <div class="banner-shape-2"><img src="~/assets/img/banner/shape-2.png" alt="img"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 align-self-center">
+                <div class="banner-inner text-center">
+                    <h3>
+                        Checkout
+                    </h3>
+                    <h1>
+                        delivery & payment info
+                    </h1>
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="home.html">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- bredcrumb Area End -->
+<!-- checkout area start -->
+<div class="checkout-area pd-top-120 pd-bottom-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bill-payment-wrap">
+                    <h5>
+                        Billing details
+                    </h5>
+                    <form class="default-form-wrap style-2">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                                <div class="single-input-wrap">
+                                    <input type="text" name="Name" id="Name" class="form-control" placeholder="Your Name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Contact No</label>
+                                <div class="single-input-wrap">
+                                    <input type="text" name="ContactNo" id="ContactNo" class="form-control" placeholder="Contact No">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Email</label>
+                                <div class="single-input-wrap">
+                                    <input type="text" name="Enail" id="Email" class="form-control" placeholder="Type Your Email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Address</label>
+                                <div class="single-input-wrap">
+                                    <input type="text" name="Address" id="Address" class="form-control" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Permanent address</label>
+                                <div class="single-input-wrap">
+                                    <input type="text" class="form-control" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Customization Description</label>
+                                <div class="single-input-wrap">
+                                    <textarea class="form-control" name="Description" id="Description" rows="2" cols="5" placeholder="Notes, eg. special things if you wanna customised along with your order"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="order-area">
+                    <h5 class="title">Your order</h5>
+                    <div class="order-product">
+                        @*<div class="thumb">
+                            <img src="~/assets/img/widget/01.png" alt="img">
+                        </div>*@
+                        @*<div class="details">
+
+                            <h6 class="cart-product-name">ABC</h6>
+                            <ul>
+                                <li><span>Select Size: </span>Large</li>
+                                <li><span>Select Crust: </span>Double Crust</li>
+                            </ul>
+                        </div>*@
+                    </div>
+
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="product-name font-weight-bold text-left" style="padding-left: 10px;">Product</th>
+                                <th class="product-total font-weight-bold text-right" style="padding-left: 30px;">Total</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody class="cart-products" style="padding-left:10px;">
+                        </tbody>
+                        
+                        <tfoot>
+                            <tr class="cart-subtotal" >
+                                <th class=" text-left" style="padding-top:80px;padding-bottom:30px;">Cart Subtotal</th>
+                                <td class=" text-right" style="padding-top:80px;padding-bottom:30px;"><span class="amount semi-bold sub-total">RS00.00</span></td>
+                            </tr>
+                         
+                            
+                        </tfoot>
+                    </table>
+
+
+
+
+                    @*<ul class="amount">
+            <li class="sub-total">Subtotal<span></span></li>
+            <li class="total sub-total">Total<span> </span></li>
+        </ul>*@
+
+                    <a href="javascript:;" id="checkout"  class="btn btn-secondary w-100" > PLACE ORDER</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- checkout area end -->
+
+
+<script type="text/JavaScript">
+        var total = 0;
+        var orderNoURL= "";
+        $(document).ready(function () {
+            $("#paraEP").hide();
+            $("#paraBT").hide();
+            localStorage.removeItem("_setting");
+            localStorage.setItem("_setting", "[]");
+            cartdata(0);
+
+
+            var check = getCartLS();
+            if (check.length > 0) {
+                $("#checkout").show();
+            }
+            else {
+                $("#checkout").hide();
+                $("#Text-Error").html("Kindly add items in your cart then place order");
+            }
+
+        });
+
+        function getbuttonvalue(val) {
+            if (val.value == "PayPal") {
+                $("#paypal-button").show();
+                $("#checkout").hide();
+            }
+            else {
+                $('#paypal-validation').html("");
+                $("#paypal-button").hide();
+                $("#checkout").show();
+            }
+            if (val.value == "Banktransfer") {
+                $("#paraBT").show();
+                $("#paraEP").hide();
+            }
+            else if (val.value == "Pickup") {
+                $("#paraBT").show();
+                $("#paraEP").hide();
+            }
+
+            else {
+                $("#paraEP").hide();
+                $("#paraBT").hide();
+            }
+
+        }
+    $("#checkout").click(function () {               
+        if ($("#Name").val() == "" ) {
+            swal({
+                title: "Error !",
+                text: "Name Required",
+                type: "error",
+                html: true,
+                showCancelButton: false,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ok",
+                closeOnConfirm: false,
+            });         
+        }
+        else if ($('#ContactNo').val() == "" ) {
+            swal({
+                title: "Error !",
+                text: "Contact No Required",
+                type: "error",
+                html: true,
+                showCancelButton: false,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ok",
+                closeOnConfirm: false,
+            });  
+        }
+        else if ($('#Email').val() == "") {
+            swal({
+                title: "Error !",
+                text: "Email Required",
+                type: "error",
+                html: true,
+                showCancelButton: false,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ok",
+                closeOnConfirm: false,
+            });  
+        }
+        else if ($('#Address').val() == "") {
+            swal({
+                title: "Error !",
+                text: "Address Required",
+                type: "error",
+                html: true,
+                showCancelButton: false,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ok",
+                closeOnConfirm: false,
+            });  
+        }
+        else if ($('#Description').val() == "") {
+            swal({
+                title: "Error !",
+                text: "Customize Description is Required",
+                type: "error",
+                html: true,
+                showCancelButton: false,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ok",
+                closeOnConfirm: false,
+            });  
+            
+        }
+        else {
+            checkout();
+        }
+
+    });
+        //Order working
+        function checkout() {
+            debugger
+            $("#checkout").hide();
+            $("#btn-load").show();
+
+
+            //=============================== Date For Order# ===================
+            var TodayDate  = new Date();
+            var dd = String(TodayDate.getDate()).padStart(2, '0');
+            var mm = String(TodayDate.getMonth() + 1).padStart(2, '0');
+            var yyyy = (new Date().getFullYear() + '').slice(-2);
+            TodayDate = mm + dd + yyyy;
+
+            //=============================== Current Date ======================
+            var m = new Date();
+            var dateString =
+                m.getUTCFullYear() + "/" +
+                ("0" + (m.getUTCMonth() + 1)).slice(-2) + "/" +
+                ("0" + m.getUTCDate()).slice(-2) + " " +
+                ("0" + m.getUTCHours()).slice(-2) + ":" +
+                ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+                ("0" + m.getUTCSeconds()).slice(-2);
+
+            //=============================== Order Details =====================
+
+            var shippingcharges = 0;
+            var total = 0;
+            var chkLScart = localStorage.getItem("_cartitems");
+            var data = JSON.parse(chkLScart);
+
+            //var chkLSgift = localStorage.getItem("_giftitems");
+            //var dataGift = JSON.parse(chkLSgift);
+            var totalPrice = 0;
+            var totalQty = 0;
+
+
+            for (var i = 0; i < data.length; i++) {
+                totalQty += Number(data[i].Qty);
+                totalPrice += data[i].Qty * data[i].Price;
+            }
+
+            //if (dataGift.length > 0) {
+            //    for (var j = 0; j < dataGift.length; j++) {
+            //        totalPrice += dataGift[j].DisplayPrice;
+            //    }
+            //}
+
+            var LSsettings = JSON.parse(localStorage.getItem("_setting"));
+            var settings = LSsettings[0];
+
+
+
+            //=============================== Order Master =====================
+
+
+
+            total = totalPrice.toFixed(2);
+
+
+
+            var Order = new Object();
+            //Order.OrderNo = 'MR-' + TodayDate + '-' +@Convert.ToInt32(Session["CustomerID"])+'-' + Math.floor((Math.random() * 1000) + 1);
+
+            Order.OrderNo = '';
+
+            Order.CustomerID = @Convert.ToInt32(Session["CustomerID"]);
+            Order.AmountTotal = totalPrice;
+            Order.GrandTotal = total;
+            //Order.Tax = Taxamount;
+            //Order.DeliveryAmount = settings.DeliveryCharges;
+            //Order.DiscountAmount = CouponDisount;
+            Order.TotalItems = totalQty;
+            Order.StatusID = 1;
+            Order.OrderDate = dateString;
+            Order.LastUpdatedDate = dateString;
+            Order.LastUpdatedBy = 0;
+            //Order.CouponID = $('#CouponID').val();
+
+            //========================== Customer Order Info ========================
+            Order.Address = $('#Address').val();
+            //Order.NearestPlace = $('#NearestPlace').val();
+            //Order.Country = $('#Country').val();
+            //Order.City = $('#City option:selected').html();
+            Order.ContactNo = $('#ContactNo').val();
+            //Order.DeliveryDate = $('#DeliveryDate').val();
+            //Order.SelectedTime = $('#DeliveryTime').val();
+            Order.CustomerID = @Convert.ToInt32(Session["CustomerID"]);
+            Order.Name = $('#Name').val();
+            //Order.Latitude = 'Not Defined';
+            //Order.Longitude = 'Not Defined';
+            //Order.PlaceType = $('#PlaceType').val();
+            //Order.Email = $('#Email').val();
+            Order.Email = $('#Email').val();
+            Order.OrderDetailString = JSON.stringify(data);
+
+            Order.Remarks = $('#Description').val();
+            //Order.SenderName = $('#SenderName').val();
+            //Order.SenderEmail = $('#SenderEmail').val();
+            //Order.SenderContact = $('#SenderContact').val();
+            //Order.CouponCode = $('#CouponCode').val();
+
+            var PaymentType = $(".payactive").val();
+            if (PaymentType == "Credimax") {
+                Order.PaymentMethodID = 2
+            }
+            else if (PaymentType == "PayPal") {
+                Order.PaymentMethodID = 3
+            }
+            else if (PaymentType == "BenefitPay") {
+                Order.PaymentMethodID = 4
+            }
+            else if (PaymentType == "Easypaisa") {
+                Order.PaymentMethodID = 5;
+            }
+            else if (PaymentType == "Banktransfer") {
+                Order.PaymentMethodID = 6
+            }
+            else if (PaymentType == "Pickup") {
+                Order.PaymentMethodID = 7
+            }
+            else if (PaymentType == "DebitCreditCard") {
+                Order.PaymentMethodID = 8
+            }
+            else {
+                Order.PaymentMethodID = 1
+            }
+            var Masterorder = JSON.stringify({ 'data': Order });
+
+            $.ajax({
+                type: "POST",
+                url: '/Order/PunchOrder',
+                data: Masterorder,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.data.OrderNo == null && data.data != "DebitCreditCard") {
+                        localStorage.clear();
+                        window.location.href = '/Order/OrderComplete?OrderID=' + data.data + '&OrderNo=' + Order.OrderNo;
+                    }
+
+                    else if (data.data == "DebitCreditCard") {
+
+                        localStorage.clear();
+                        orderNoURL = Order.OrderNo;
+                        Order.OrderID = data.OrderID;
+                        TapPay(Order);
+                    }
+                    else {
+                        getCardDetails(data.data.sessionID, data.data.GrandTotal, data.data.OrderNo, data.data.Description);
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                }
+            });
+
+        };
+
+
+
+    function cartdata(coupon) {
+            debugger
+            var gifts = getgiftLS();
+            var checkLSsetting = localStorage.getItem("_setting");
+            var LSsettings = JSON.parse(localStorage.getItem("_setting"));
+            var settings = LSsettings[0];
+
+            var shippingcharges = 0;
+            var total = 0;
+            var chkLScart = localStorage.getItem("_cartitems");
+            var data = JSON.parse(chkLScart);
+            var html = '';
+            var totalPrice = 0;
+            var totalQty = 0;
+
+            for (var i = 0; i < data.length; i++) {
+                var giftPrice = 0;
+                totalQty += Number(data[i].Qty);
+                totalPrice += data[i].Qty * data[i].Price;
+                html += '<tr class="cart_item" >'
+                    + '<td width="70%" class="product-name  text-left">' + data[i].Name + '<strong class="product-quantity">' + ' X ' + data[i].Qty + '</strong>'
+
+
+                html += '</td>'
+                    + '<td width="30%" class="product-total text-right">'
+                    + '<span class="amount">' + ((data[i].Qty * data[i].Price)).toFixed(2) + '</span>'
+                    + '</td>'
+                    + '</tr>'
+            }
+            $(".cart-products").html(html)
+
+            if (data.length > 0) {
+                $(".sub-total").html(currency + ' ' + (totalPrice).toFixed(2));
+
+                var shippingcharges = localStorage.getItem("_shippingcharges");
+                $(".shipping-amount").html(currency + ' ' + (parseFloat(shippingcharges?? 0)).toFixed(2));
+
+                //Taxamount = (totalPrice * (settings.TaxPercentage / 100)).toFixed(2);
+                //$('.Tax-amount').html(currency + ' ' + Taxamount);
+                //$('#taxper').html(' (' + settings.TaxPercentage + '%)');
+                //if ($('#CouponType').val() == 'Amount') {
+                //    total = (((totalPrice + (totalPrice * (settings.TaxPercentage / 100))) - coupon) + settings.DeliveryCharges).toFixed(2);
+                //    $(".coupon-amount").html(currency + ' ' + coupon.toFixed(2));
+                //}
+                //else {
+                //    total = (((totalPrice + (totalPrice * (settings.TaxPercentage / 100))) - (totalPrice * (coupon / 100))) + settings.DeliveryCharges).toFixed(2);
+                //    $(".coupon-amount").html(currency + ' ' + (totalPrice * (coupon / 100)).toFixed(2));
+                //}
+
+                $("#totalamount").html(currency + ' ' + total);
+            }
+            else {
+                $(".sub-total").html("");
+                $('.Tax-amount').html("");
+                $(".shipping-amount").html("");
+                $("#totalamount").html("");
+            }
+
+            //if (total < settings.MinimumOrderValue && total > 0) {
+            //    $("#checkout").hide();
+            //    $("#Text-Error").html("Minimum Order Value is AED " + settings.MinimumOrderValue.toFixed(2) + ". Please get some more product to proceed your order.");
+            //}
+            //else if (total > settings.MinimumOrderValue) {
+            //    $("#checkout").show();
+            //}
+        };
+        var header = document.getElementById("Payment-btn");
+        var btns = header.getElementsByClassName("btn");
+
+        $('#Payment-btn').on('click', '.btn-pay', function () {
+            $(this).addClass('payactive').siblings().removeClass('payactive');
+            $('#payment-alert').html('');
+        });
+
+
+        function errorCallback(error) {
+            console.log(JSON.stringify(error));
+        }
+        function cancelCallback() {
+            console.log('Payment cancelled');
+        }
+        function restorePageState(data) {
+            //set page state from data object
+            console.log(data);
+
+        }
+
+</script>
+ 
+

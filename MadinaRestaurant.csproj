@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="assets\css\animate.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\Custom.css" />
     <Content Include="assets\css\fontawesome.min.css" />
     <Content Include="assets\css\jquery-ui.min.css" />
     <Content Include="assets\css\magnific.min.css" />
@@ -104,10 +105,13 @@
     <Content Include="assets\css\responsive.css" />
     <Content Include="assets\css\slick-slide.min.css" />
     <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\sweetalert\sweetalert.css" />
     <Content Include="assets\fonts\globe-solid.svg" />
     <Content Include="assets\fonts\line-awesome.svg" />
+    <Content Include="assets\img\4.png" />
     <Content Include="assets\img\ad.png" />
     <Content Include="assets\img\ajax-loader.gif" />
+    <Content Include="assets\img\banner\banner - Copy.png" />
     <Content Include="assets\img\banner\banner.png" />
     <Content Include="assets\img\banner\bg-img-2.png" />
     <Content Include="assets\img\banner\bg-img.png" />
@@ -123,12 +127,15 @@
     <Content Include="assets\img\blog\single-2.png" />
     <Content Include="assets\img\blog\single-3.png" />
     <Content Include="assets\img\blog\single.png" />
+    <Content Include="assets\img\category\07.png" />
+    <Content Include="assets\img\category\08.png" />
     <Content Include="assets\img\category\1.png" />
     <Content Include="assets\img\category\2.png" />
     <Content Include="assets\img\category\3.png" />
     <Content Include="assets\img\category\4.png" />
     <Content Include="assets\img\category\5.png" />
     <Content Include="assets\img\category\6.png" />
+    <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\fevicon.png" />
     <Content Include="assets\img\home-2\about\1.png" />
     <Content Include="assets\img\home-2\about\bg.png" />
@@ -180,7 +187,11 @@
     <Content Include="assets\img\instagram\4.png" />
     <Content Include="assets\img\instagram\5.png" />
     <Content Include="assets\img\instagram\6.png" />
+    <Content Include="assets\img\instagram\facebook.png" />
+    <Content Include="assets\img\instagram\instagram.png" />
     <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\madina-res.png" />
+    <Content Include="assets\img\NA.png" />
     <Content Include="assets\img\offer\03.png" />
     <Content Include="assets\img\offer\1.png" />
     <Content Include="assets\img\offer\2.png" />
@@ -221,6 +232,7 @@
     <Content Include="assets\img\widget\ad.png" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\counterup.js" />
+    <Content Include="assets\js\custom.js" />
     <Content Include="assets\js\demos.js" />
     <Content Include="assets\js\fontawesome.min.js" />
     <Content Include="assets\js\imageloded.min.js" />
@@ -233,19 +245,29 @@
     <Content Include="assets\js\owl.min.js" />
     <Content Include="assets\js\ripple.js" />
     <Content Include="assets\js\slick-slider.min.js" />
+    <Content Include="assets\js\sweetalert\sweetalert.min.js" />
     <Content Include="assets\js\tweenmax.min.js" />
     <Content Include="assets\js\waypoint.js" />
     <Content Include="assets\js\wow.min.js" />
     <Content Include="assets\webfonts\fa-brands-400.svg" />
     <Content Include="assets\webfonts\fa-regular-400.svg" />
     <Content Include="assets\webfonts\fa-solid-900.svg" />
+    <Content Include="cart.html" />
+    <Content Include="checkout.html" />
     <Content Include="Global.asax" />
+    <Content Include="home-1.html" />
+    <Content Include="menu-list.html" />
+    <Content Include="menu.html" />
+    <Content Include="shop.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,11 +275,20 @@
     <Compile Include="Helpers\DBHelper.cs" />
     <Compile Include="Helpers\LINQtoDataTable.cs" />
     <Compile Include="Helpers\ListExtensions.cs" />
+    <Compile Include="Models\BLL\categoryBLL.cs" />
+    <Compile Include="Models\BLL\checkoutBLL.cs" />
+    <Compile Include="Models\BLL\filterBLL.cs" />
     <Compile Include="Models\BLL\itemBLL.cs" />
+    <Compile Include="Models\BLL\loginBLL.cs" />
+    <Compile Include="Models\BLL\myorderBLL.cs" />
     <Compile Include="Models\BLL\productBLL.cs" />
+    <Compile Include="Models\BLL\shopBLL.cs" />
     <Compile Include="Models\Service\baseService.cs" />
+    <Compile Include="Models\Service\categoryService.cs" />
+    <Compile Include="Models\Service\filterService.cs" />
     <Compile Include="Models\Service\itemService.cs" />
     <Compile Include="Models\Service\productService.cs" />
+    <Compile Include="Models\Service\shopService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,6 +337,14 @@
     <Content Include="Views\Home\Aboutus.cshtml" />
     <Content Include="Views\Home\Contactus.cshtml" />
     <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Order\Cart.cshtml" />
+    <Content Include="Views\Order\Checkout.cshtml" />
+    <Content Include="Views\Shop\Shop.cshtml" />
+    <Content Include="Views\Home\MenuList.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Account\Login_Register.cshtml" />
+    <Content Include="Views\Order\OrderComplete.cshtml" />
+    <Content Include="Views\Home\_Products.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,540 @@
+﻿@*@model IEnumerable<MadinaRestaurant.Models.BLL.productBLL>*@
+@model IEnumerable<MadinaRestaurant.Models.BLL.filterBLL>
+@{
+    ViewBag.Title = "Madina";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+
+
+
+    <style>
+        .btn {
+            height: 56px;
+            line-height: 56px;
+            padding: 0px 24px !important;
+            overflow: hidden;
+            position: relative;
+            border: 0;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            font-weight: 600;
+            font-size: 18px;
+            display: inline-block;
+            -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+            border-radius: 50px;
+        }
+
+        .owl-carousel {
+            display: block !important;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .product-nav .nav-item .nav-link.active {
+            background-color: #4d6d1f;
+            color: #fff;
+        }
+
+        .product-nav .nav-item .nav-link {
+            height: 80px;
+            background-color: #c8e87c;
+            border-radius: 50px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+
+        .navbar-area-fixed {
+            -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+            top: 0;
+            background-color: #4d6d1f !important;
+            /*background: rgb(187,239,87);
+            background: radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%);*/
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-area {
+            padding: 0;
+            top: 0;
+            position: fixed;
+            z-index: 98;
+            width: 100% !important;
+            -webkit-transition: all 0.4s;
+            transition: all 0.4s;
+            background-color: #4d6d1f !important;
+            border-bottom: 1px solid white;
+            -webkit-box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
+            box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
+        }
+
+        .navbar-area-fixed {
+            -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+            top: 0;
+            background-color: #4d6d1f;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        .single-item-wrap .thumb a {
+            position: relative;
+            top: 18px;
+            right: 27px;
+            font-size: 24px;
+        }
+        #a{
+            display:none;
+        }
+        .btn:hover {
+            color: #fff;
+            background-color: yellowgreen;
+        }
+
+        .testimonial-area {
+            padding: 80px 0 80px !important;
+            background-image: url(../img/testimonial/1.png);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .green {
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<section class="banner-area">
+    <div class="banner-thumb">
+        <img style="z-index:-1;" src="~/assets/img/banner/banner.png" alt="img">
+    </div>
+    <div class="banner-bg-img" style="background-size:cover;"></div>
+    <div class="banner-shape-1"><img src="~/assets/img/banner/shape-1.png" alt="img"></div>
+    <div class="banner-shape-2"><img src="~/assets/img/banner/shape-2.png" alt="img"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 align-self-center">
+                <div class="banner-inner text-center">
+                    <h3 style="color:white !important;">You deserve the best!</h3>
+                    <h1>Welcome to Madina Restaurant</h1>
+                    <a href="@Url.Action("shop","shop")" class="btn btn-secondary">BUY IT NOW</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Banner Area End -->
+<!-- category Area Start-->
+<!-- product Area Start-->
+<section class="product-area pd-bottom-60" style="padding-top:50px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+                @*<ul class="product-nav nav nav-pills" id="pills-tab" role="tablist">
+                    @foreach (var item in ViewBag.Category)
+                    {
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>
+                        </li>
+
+                    }
+                </ul>*@
+
+
+
+                <ul class="product-nav nav nav-pills" id="pills-tab" role="tablist">
+                    @foreach (var item in ViewBag.Category)
+                    {
+                        <!--<li class="nav-item" role="presentation">
+                    <label><input type="checkbox" name="Category" value="@item.CategoryID"><img src="~/assets/img/category/1.png" alt="img">@item.Name</label>-->
+                        @*<button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>*@
+                        <!--</li>-->
+                        <li>
+
+                            <label class="btn btn-warning btn-rounded form-check-label colr"  style="margin:0px 20px 0px 3px !important;">
+                                <input type="checkbox" name="Category" id="a" value="@item.CategoryID" class="form-check-input checkbox" autocomplete="off"> @item.Name
+                                <i><img src="~/assets/img/category/1.png" alt="img"></i>
+                            </label>
+
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="tab-content" id="pills-tabContent">
+
+        </div>
+
+        <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
+
+            <div class="row justify-content-center">
+                @*<div class="section-title text-center">
+                    <h3 class="sub-title">Our signature</h3>
+                    <h2 class="title">Delicious Deals for Delicious Meals</h2>
+                </div>*@
+                @foreach (var item in ViewBag.BestProduct)
+                {
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-item-wrap">
+                            <div class="thumb">
+
+                                @*<a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>*@
+                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
+
+                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                            </div>
+                            <div class="wrap-details">
+                                <h5><a href="single-product.html">@item.Name</a></h5>
+                                <div class="wrap-footer">
+                                    @*<div class="rating">
+                                        4.9
+                                        <span class="rating-inner">
+                                            <i class="ri-star-fill ps-0"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line pe-0"></i>
+                                        </span>
+
+                                    </div>*@
+                                    <h6 class="price">Rs.@item.Price</h6>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <a class="btn btn-secondary" href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @*<div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-item-wrap">
+                            <div class="thumb">
+                                <img src="~/assets/img/product/pizza/1.png" alt="img">
+                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                            </div>
+                            <div class="wrap-details">
+                                <h5><a href="single-product.html">Margherita Pizza</a></h5>
+                                <div class="wrap-footer">
+                                    <div class="rating">
+                                        4.9
+                                        <span class="rating-inner">
+                                            <i class="ri-star-fill ps-0"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line pe-0"></i>
+                                        </span>
+                                        (200)
+                                    </div>
+                                    <h6 class="price">$17.00</h6>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <a class="btn btn-secondary" href="@Url.Action("ProductDetails","Product")">CHOOSE OPTIONS </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>*@
+    </div>
+</section>
+<!-- product Area End -->
+<!-- category Area End -->
+<!-- offer Area Start-->
+<section class="offer-area pd-top-60 pd-bottom-60">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 align-self-center d-contents">
+                <div class="single-offer-wrap" style="background: radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%);">
+                    <img class="bg-img" src="~/assets/img/offer/1.png" alt="img">
+                    <div class="wrap-details">
+                        <h2>Special Delicious </h2>
+                        <h5>Afghani boti Testes Better</h5>
+                        <a class="btn btn-white" href="@Url.Action("Shop", "Shop")">ORDER NOW</a>
+                    </div>
+                    <div class="offer-sticker">
+                        <img src="~/assets/img/offer/offer.png" alt="img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <div class="single-offer-wrap" style="background-color: var(--heading-color);">
+                    <img class="bg-img" src="~/assets/img/offer/2.png" alt="img">
+                    <div class="wrap-details">
+                        <h3>Enjoy Our Delicious Item</h3>
+                        <a class="btn btn-white" href="@Url.Action("Shop", "Shop")">ORDER NOW</a>
+                    </div>
+                </div>
+                <div class="single-offer-wrap" style="background-color: #FFEECC">
+                    <div class="animated-img"><img src="~/assets/img/offer/03.png" alt="img"></div>
+                    <div class="animated-img animated-img-2"><img src="~/assets/img/offer/03.png" alt="img"></div>
+                    <div class="overlay-gradient"></div>
+                    <div class="wrap-details">
+                        <h3 class="text-heading">The Fastest In Delivery <span>Food</span></h3>
+                        <a class="btn btn-white" href="@Url.Action("Shop", "Shop")">ORDER NOW</a>
+                    </div>
+                    <img class="bg-img-2" src="~/assets/img/offer/3.png" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- offer Area End -->
+<!-- populer Area Start-->
+@*<section class="populer-area pd-bottom-90">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="section-title text-center">
+                    <h3 class="sub-title">Our signature</h3>
+                    <h2 class="title">Popular Dishes</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach (var item in ViewBag.itemList)
+            {
+                <div class="col-lg-4 col-6">
+                    <div class="single-item-wrap">
+                        <div class="thumb">
+                            @if (item.Image == "" || item.Image == null)
+                            {
+                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/NA.png" alt="@item.Name"></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></a>
+                            }
+                             
+                            <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                        </div>
+                        <div class="wrap-details">
+                            <h5><a href="single-product.html">@item.Name</a></h5>
+                            <div class="wrap-footer">
+                                <div class="rating">
+                                    4.9
+                                    <span class="rating-inner">
+                                        <i class="ri-star-fill ps-0"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-half-line pe-0"></i>
+                                    </span>
+                                    (200)
+                                </div>
+                                <h6 class="price">@item.Price</h6>
+                            </div>
+                        </div>
+                        <div class="btn-area">
+                            <a class="btn btn-secondary" href="single-product.html">CHOOSE OPTIONS </a>
+                        </div>
+                    </div>
+                </div>
+            }
+           
+        </div>
+
+    </div>
+</section>*@
+<!-- populer Area End -->
+<!-- featured Area Start-->
+<section class="featured-area pd-bottom-150" style="background-image: url(../../assets/img/other/featured.png);">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section-title text-center">
+                    <h3 class="sub-title text-secondary" style="color:white !important;">Tasty how The new</h3>
+                    <h2 class="title text-white">Meet Your New Lunchtime Faves</h2>
+                    <a class="btn btn-base" href="@Url.Action("Shop", "Shop")" style="background:radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%) !important;">SEE ALL MENU</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- featured Area End -->
+<!-- about Area Start-->
+@*<section class="about-area pd-top-120 pd-bottom-90">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="thumb mb-lg-0 mb-4">
+                    <img src="~/assets/img/other/about.png" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title text-lg-start text-center">
+                    <h3 class="sub-title">Why choose us</h3>
+                    <h2 class="title">Why we are the best</h2>
+                    <p>A, blandit euismod ullamcorper vestibulum enim habitasse. Ultrices tincidunt scelerisque elit enim. A neque malesuada in tortor eget justo mauris nec dolor. Consequat risus vitae, ac ac et preparation. He wanted to serve burgers, fries and beverages that tasted .</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="single-about-wrap">
+                            <img src="~/assets/img/icon/1.png" alt="img" style="padding-right:40px;">
+                            <span>Fresh food</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="single-about-wrap">
+                            <img src="~/assets/img/icon/2.png" alt="img">
+                            Fast Delivery
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="single-about-wrap">
+                            <img src="~/assets/img/icon/3.png" alt="img">
+                            Quality Maintain
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="single-about-wrap">
+                            <img src="~/assets/img/icon/4.png" alt="img">
+                            24/7 Service
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+<!-- about Area End -->
+<!-- subscribe Area Start-->
+<!--<br />
+<section class="subscribe-area pd-bottom-150" style="background-image: url(../../assets/img/other/location.png); " >
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-9 col-md-10">
+                <div class="section-title text-center">
+                    <h3 class="sub-title text-secondary">Our Location</h3>
+                    <h2 class="title text-white">Find Locations </h2>
+                    <form>
+                        <div class="single-input-wrap mb-0 with-btn">
+                            <input type="email" placeholder="Zip code or state providence">-->
+                            @*<button class="btn btn-base" style="background:radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%) !important;">SEE LOCATION</button>*@
+                            <!--<a href="@Url.Action("Contactus","Home")" class="btn btn-base" style="background:radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%) !important;">FIND LOCATION</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>-->
+<!-- subscribe Area End -->
+<!-- testimonial Area Start-->
+<section class="testimonial-area text-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-10">
+                <h2 class="title">Reviews</h2>
+
+                <div class="testimonial-slider owl-carousel">
+                    <div class="item">
+                        <div class="testimonial-wrap">
+                            <p>“We have no regrets! I don't know what else to say. It really saves me time and effort. Food is exactly what our business has been lacking”</p>
+                            @*<h3>
+                        Julia R. Davis
+                    </h3>*@
+                            <h6>Food Bloger</h6>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimonial-wrap">
+                            <p>“We have no regrets! I don't know what else to say. It really saves me time and effort. Food is exactly what our business has been lacking”</p>
+                            @*<h3>
+                        Davis J. Rulia
+                    </h3>*@
+                            <h6>Food Bloger</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonial Area End -->
+
+
+<script>
+    
+
+    $("#pills-tabContent").load('@Url.Action("Products", "Home")');
+    $("#divLoader").hide();
+
+    var Category = [];
+
+    $('input[name="Category"]').click(function () {
+
+        if ($(this).prop("checked") == true) {
+            Category.push($(this).val());
+
+            ProductFilter(Category.join());
+        }
+        else {
+            var index = Category.indexOf($(this).val());
+            Category.splice(index, 1);
+
+            ProductFilter(Category.join());
+        }
+    });
+
+    function ProductFilter(Category) {
+        $("#divLoader").show();
+        $("#pills-tabContent").hide();
+
+        var filter = new Object();
+        filter.Category = Category;
+
+
+        var FilterData = JSON.stringify(filter);
+        $.ajax({
+            type: "POST",
+            url: '../Home/Filter',
+            data: FilterData,
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            success: function (obj) {
+                $.ajax({
+                    type: "POST",
+                    url: '../Home/Products',
+                    data: JSON.stringify(obj.data),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'html',
+                    success: function (data) {
+
+                        $("#divLoader").hide();
+                        $("#pills-tabContent").show();
+                        $("#pills-tabContent").html(data);
+
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+
+                    }
+                });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                //
+            }
+        });
+    }
+</script>
+

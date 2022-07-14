@@ -1,0 +1,65 @@
+﻿
+<head>
+    <style>
+        .single-item-wrap .wrap-details {
+            margin-top: 35px !important;
+        }
+        .single-item-wrap .thumb {
+            text-align: center;
+            padding-left: 50px;
+        }
+        .single-item-wrap .wrap-details .wrap-footer .price {
+            margin-left: 0px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
+  
+    <div class="row justify-content-center">
+        <div class="section-title text-center">
+            <h3 class="sub-title">Our signature</h3>
+            <h2 class="title">Delicious Deals for Delicious Meals</h2>
+        </div>
+        @foreach (var item in ViewBag.shopList)
+        {
+            <div class="col-lg-3 col-md-6">
+                <div class="single-item-wrap">
+                    <div class="thumb">
+                       
+                            @*<a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>*@
+                            <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
+ 
+                        <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                    </div>
+                    <div class="wrap-details">
+                        <h5><a href="single-product.html">@item.ItemName</a></h5>
+                        <div class="wrap-footer">
+                            @*<div class="rating">
+                                4.9
+                                <span class="rating-inner">
+                                    <i class="ri-star-fill ps-0"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line pe-0"></i>
+                                </span>
+                                 
+                            </div>*@
+                            <h6 class="price">Rs.@item.Price</h6>
+                        </div>
+                    </div>
+                    <div class="btn-area">
+                        <a class="btn btn-secondary" href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
