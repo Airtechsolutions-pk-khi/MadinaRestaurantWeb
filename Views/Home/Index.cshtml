@@ -4,111 +4,106 @@
     ViewBag.Title = "Madina";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .btncategory {
+        vertical-align: initial;
+        height: 53px;
+        line-height: 34px;
+        padding: 8px 10px !important;
+        overflow: hidden;
+        position: relative;
+        border: 0;
+        -webkit-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        font-weight: 500;
+        display: inline-block;
+        -webkit-transform: perspective(1px) translateZ(0);
+        transform: perspective(1px) translateZ(0);
+        border-radius: 50px;
+    }
 
-<head>
+    .owl-carousel {
+        display: block !important;
+        width: 100%;
+        z-index: 1;
+    }
 
+    .product-nav .nav-item .nav-link.active {
+        background-color: #4d6d1f;
+        color: #fff;
+    }
 
-
-    <style>
-        .btn {
-            height: 56px;
-            line-height: 56px;
-            padding: 0px 24px !important;
-            overflow: hidden;
-            position: relative;
-            border: 0;
-            -webkit-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-            font-weight: 600;
-            font-size: 18px;
-            display: inline-block;
-            -webkit-transform: perspective(1px) translateZ(0);
-            transform: perspective(1px) translateZ(0);
-            border-radius: 50px;
-        }
-
-        .owl-carousel {
-            display: block !important;
-            width: 100%;
-            z-index: 1;
-        }
-
-        .product-nav .nav-item .nav-link.active {
-            background-color: #4d6d1f;
-            color: #fff;
-        }
-
-        .product-nav .nav-item .nav-link {
-            height: 80px;
-            background-color: #c8e87c;
-            border-radius: 50px;
-            width: 100%;
-            font-size: 18px;
-            font-weight: 500;
-        }
+    .product-nav .nav-item .nav-link {
+        height: 80px;
+        background-color: #c8e87c;
+        border-radius: 50px;
+        width: 100%;
+        font-size: 18px;
+        font-weight: 500;
+    }
 
 
-        .navbar-area-fixed {
-            -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            top: 0;
-            background-color: #4d6d1f !important;
-            /*background: rgb(187,239,87);
+    .navbar-area-fixed {
+        -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+        box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+        top: 0;
+        background-color: #4d6d1f !important;
+        /*background: rgb(187,239,87);
             background: radial-gradient(circle, rgba(187,239,87,1) 0%, rgba(129,170,30,1) 70%, rgba(77,109,31,1) 100%);*/
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
 
-        .navbar-area {
-            padding: 0;
-            top: 0;
-            position: fixed;
-            z-index: 98;
-            width: 100% !important;
-            -webkit-transition: all 0.4s;
-            transition: all 0.4s;
-            background-color: #4d6d1f !important;
-            border-bottom: 1px solid white;
-            -webkit-box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
-            box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
-        }
+    .navbar-area {
+        padding: 0;
+        top: 0;
+        position: fixed;
+        z-index: 98;
+        width: 100% !important;
+        -webkit-transition: all 0.4s;
+        transition: all 0.4s;
+        background-color: #4d6d1f !important;
+        border-bottom: 1px solid white;
+        -webkit-box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
+        box-shadow: 0 9px 150px -30px rgb(0 0 0 / 9%);
+    }
 
-        .navbar-area-fixed {
-            -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
-            top: 0;
-            background-color: #4d6d1f;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
+    .navbar-area-fixed {
+        -webkit-box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+        box-shadow: 0px 4px 6px 0px rgb(12 0 46 / 5%);
+        top: 0;
+        background-color: #4d6d1f;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
 
-        .single-item-wrap .thumb a {
-            position: relative;
-            top: 18px;
-            right: 27px;
-            font-size: 24px;
-        }
-        #a{
-            display:none;
-        }
-        .btn:hover {
-            color: #fff;
-            background-color: yellowgreen;
-        }
+    .single-item-wrap .thumb a {
+        position: relative;
+        top: 18px;
+        right: 27px;
+        font-size: 24px;
+    }
 
-        .testimonial-area {
-            padding: 80px 0 80px !important;
-            background-image: url(../img/testimonial/1.png);
-            background-size: cover;
-            background-position: center;
-        }
+    #a {
+        display: none;
+    }
 
-        .green {
-            background-color: yellowgreen;
-        }
-    </style>
-</head>
+    .btn:hover {
+        color: #fff;
+        background-color: yellowgreen;
+    }
 
+    .testimonial-area {
+        padding: 80px 0 80px !important;
+        background-image: url(../img/testimonial/1.png);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .green {
+        background-color: yellowgreen;
+    }
+</style>
 <section class="banner-area">
     <div class="banner-thumb">
         <img style="z-index:-1;" src="~/assets/img/banner/banner.png" alt="img">
@@ -135,31 +130,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
-
                 @*<ul class="product-nav nav nav-pills" id="pills-tab" role="tablist">
-                    @foreach (var item in ViewBag.Category)
-                    {
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>
-                        </li>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>
+                            </li>
 
-                    }
-                </ul>*@
-
-
-
-                <ul class="product-nav nav nav-pills" id="pills-tab" role="tablist">
+                        }
+                    </ul>*@
+                <ul class="product-nav nav nav-pills justify-content-center" id="pills-tab" role="tablist">
                     @foreach (var item in ViewBag.Category)
                     {
                         <!--<li class="nav-item" role="presentation">
-                    <label><input type="checkbox" name="Category" value="@item.CategoryID"><img src="~/assets/img/category/1.png" alt="img">@item.Name</label>-->
+                        <label><input type="checkbox" name="Category" value="@item.CategoryID"><img src="~/assets/img/category/1.png" alt="img">@item.Name</label>-->
                         @*<button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>*@
                         <!--</li>-->
                         <li>
-
-                            <label class="btn btn-warning btn-rounded form-check-label colr"  style="margin:0px 20px 0px 3px !important;">
+                            <label class="btn btn-warning btn-rounded form-check-label colr btncategory" style="margin:0px 10px 0 0  !important;">
                                 <input type="checkbox" name="Category" id="a" value="@item.CategoryID" class="form-check-input checkbox" autocomplete="off"> @item.Name
-                                <i><img src="~/assets/img/category/1.png" alt="img"></i>
+                                <i><img src="~/assets/img/category/1.png" alt="img" width="40px"></i>
                             </label>
 
                         </li>
@@ -168,44 +158,39 @@
                 </ul>
             </div>
         </div>
-
-
         <div class="tab-content" id="pills-tabContent">
-
         </div>
-
         <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
-
             <div class="row justify-content-center">
                 @*<div class="section-title text-center">
-                    <h3 class="sub-title">Our signature</h3>
-                    <h2 class="title">Delicious Deals for Delicious Meals</h2>
-                </div>*@
+                        <h3 class="sub-title">Our signature</h3>
+                        <h2 class="title">Delicious Deals for Delicious Meals</h2>
+                    </div>*@
                 @foreach (var item in ViewBag.BestProduct)
                 {
                     <div class="col-lg-3 col-md-6">
                         <div class="single-item-wrap">
                             <div class="thumb">
-
                                 @*<a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>*@
-                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
-
+                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">
+                                    <img src="https://themefie.com/html/foodka/assets/img/product/pizza/1.png" alt="@item.Name">
+                                </a>
                                 <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
                             </div>
                             <div class="wrap-details">
-                                <h5><a href="single-product.html">@item.Name</a></h5>
+                                <h5><a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">@item.Name</a></h5>
                                 <div class="wrap-footer">
                                     @*<div class="rating">
-                                        4.9
-                                        <span class="rating-inner">
-                                            <i class="ri-star-fill ps-0"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-line pe-0"></i>
-                                        </span>
+                                            4.9
+                                            <span class="rating-inner">
+                                                <i class="ri-star-fill ps-0"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-line pe-0"></i>
+                                            </span>
 
-                                    </div>*@
+                                        </div>*@
                                     <h6 class="price">Rs.@item.Price</h6>
                                 </div>
                             </div>
@@ -218,41 +203,41 @@
             </div>
         </div>
         @*<div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-item-wrap">
-                            <div class="thumb">
-                                <img src="~/assets/img/product/pizza/1.png" alt="img">
-                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                            </div>
-                            <div class="wrap-details">
-                                <h5><a href="single-product.html">Margherita Pizza</a></h5>
-                                <div class="wrap-footer">
-                                    <div class="rating">
-                                        4.9
-                                        <span class="rating-inner">
-                                            <i class="ri-star-fill ps-0"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-fill"></i>
-                                            <i class="ri-star-half-line pe-0"></i>
-                                        </span>
-                                        (200)
+                <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-item-wrap">
+                                <div class="thumb">
+                                    <img src="~/assets/img/product/pizza/1.png" alt="img">
+                                    <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                                </div>
+                                <div class="wrap-details">
+                                    <h5><a href="single-product.html">Margherita Pizza</a></h5>
+                                    <div class="wrap-footer">
+                                        <div class="rating">
+                                            4.9
+                                            <span class="rating-inner">
+                                                <i class="ri-star-fill ps-0"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-fill"></i>
+                                                <i class="ri-star-half-line pe-0"></i>
+                                            </span>
+                                            (200)
+                                        </div>
+                                        <h6 class="price">$17.00</h6>
                                     </div>
-                                    <h6 class="price">$17.00</h6>
+                                </div>
+                                <div class="btn-area">
+                                    <a class="btn btn-secondary" href="@Url.Action("ProductDetails","Product")">CHOOSE OPTIONS </a>
                                 </div>
                             </div>
-                            <div class="btn-area">
-                                <a class="btn btn-secondary" href="@Url.Action("ProductDetails","Product")">CHOOSE OPTIONS </a>
-                            </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-        </div>*@
+            </div>*@
     </div>
 </section>
 <!-- product Area End -->
@@ -299,61 +284,61 @@
 <!-- offer Area End -->
 <!-- populer Area Start-->
 @*<section class="populer-area pd-bottom-90">
-    <div class="container">
+        <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="section-title text-center">
-                    <h3 class="sub-title">Our signature</h3>
-                    <h2 class="title">Popular Dishes</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            @foreach (var item in ViewBag.itemList)
-            {
-                <div class="col-lg-4 col-6">
-                    <div class="single-item-wrap">
-                        <div class="thumb">
-                            @if (item.Image == "" || item.Image == null)
-                            {
-                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/NA.png" alt="@item.Name"></a>
-                            }
-                            else
-                            {
-                                <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></a>
-                            }
-                             
-                            <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
-                        </div>
-                        <div class="wrap-details">
-                            <h5><a href="single-product.html">@item.Name</a></h5>
-                            <div class="wrap-footer">
-                                <div class="rating">
-                                    4.9
-                                    <span class="rating-inner">
-                                        <i class="ri-star-fill ps-0"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-fill"></i>
-                                        <i class="ri-star-half-line pe-0"></i>
-                                    </span>
-                                    (200)
-                                </div>
-                                <h6 class="price">@item.Price</h6>
-                            </div>
-                        </div>
-                        <div class="btn-area">
-                            <a class="btn btn-secondary" href="single-product.html">CHOOSE OPTIONS </a>
-                        </div>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="section-title text-center">
+                        <h3 class="sub-title">Our signature</h3>
+                        <h2 class="title">Popular Dishes</h2>
                     </div>
                 </div>
-            }
-           
-        </div>
+            </div>
+            <div class="row justify-content-center">
+                @foreach (var item in ViewBag.itemList)
+                {
+                    <div class="col-lg-4 col-6">
+                        <div class="single-item-wrap">
+                            <div class="thumb">
+                                @if (item.Image == "" || item.Image == null)
+                                {
+                                    <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/NA.png" alt="@item.Name"></a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></a>
+                                }
 
-    </div>
-</section>*@
+                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                            </div>
+                            <div class="wrap-details">
+                                <h5><a href="single-product.html">@item.Name</a></h5>
+                                <div class="wrap-footer">
+                                    <div class="rating">
+                                        4.9
+                                        <span class="rating-inner">
+                                            <i class="ri-star-fill ps-0"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-fill"></i>
+                                            <i class="ri-star-half-line pe-0"></i>
+                                        </span>
+                                        (200)
+                                    </div>
+                                    <h6 class="price">@item.Price</h6>
+                                </div>
+                            </div>
+                            <div class="btn-area">
+                                <a class="btn btn-secondary" href="single-product.html">CHOOSE OPTIONS </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </section>*@
 <!-- populer Area End -->
 <!-- featured Area Start-->
 <section class="featured-area pd-bottom-150" style="background-image: url(../../assets/img/other/featured.png);">
@@ -370,6 +355,7 @@
         </div>
     </div>
 </section>
+
 <!-- featured Area End -->
 <!-- about Area Start-->
 @*<section class="about-area pd-top-120 pd-bottom-90">
@@ -452,8 +438,8 @@
                         <div class="testimonial-wrap">
                             <p>“We have no regrets! I don't know what else to say. It really saves me time and effort. Food is exactly what our business has been lacking”</p>
                             @*<h3>
-                        Julia R. Davis
-                    </h3>*@
+                                    Julia R. Davis
+                                </h3>*@
                             <h6>Food Bloger</h6>
                         </div>
                     </div>
@@ -461,8 +447,8 @@
                         <div class="testimonial-wrap">
                             <p>“We have no regrets! I don't know what else to say. It really saves me time and effort. Food is exactly what our business has been lacking”</p>
                             @*<h3>
-                        Davis J. Rulia
-                    </h3>*@
+                                    Davis J. Rulia
+                                </h3>*@
                             <h6>Food Bloger</h6>
                         </div>
                     </div>
@@ -475,7 +461,7 @@
 
 
 <script>
-    
+
 
     $("#pills-tabContent").load('@Url.Action("Products", "Home")');
     $("#divLoader").hide();
