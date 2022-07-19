@@ -20,7 +20,7 @@ namespace MadinaRestaurant.Models.BLL
         public string ItemName { get; set; }
         public double Price { get; set; }
         public double Cost { get; set; }
-        public bool ISApplyDiscount { get; set; }
+        //public bool ISApplyDiscount { get; set; }
         public string ItemImage { get; set; }
      
         public string Color { get; set; }
@@ -54,10 +54,12 @@ namespace MadinaRestaurant.Models.BLL
             try
             {
                 var lst = new List<filterBLL>();
-                SqlParameter[] p = new SqlParameter[1];
+                SqlParameter[] p = new SqlParameter[2];
                 p[0] = new SqlParameter("@Category", data.Category == "" ? null : data.Category);
-                //p[1] = new SqlParameter("@Searchtxt", data.Searchtxt == "" ? null : data.Searchtxt);
-                _ds = (new DBHelper().GetDatasetFromSP)("sp_filterCategory_Web",p);
+                p[1] = new SqlParameter("@Searchtxt", data.Searchtxt == "" ? null : data.Searchtxt);
+                //_ds = (new DBHelper().GetDatasetFromSP)("sp_filterCategory_Web",p);
+                _ds = (new DBHelper().GetDatasetFromSP)("sp_filterProduct_Web", p);
+                
                 if (_ds != null)
                 {   
                     if (_ds.Tables.Count > 0)
@@ -73,5 +75,53 @@ namespace MadinaRestaurant.Models.BLL
                 return null;
             }
         }
+
+        public List<filterBLL> GetAllCat(filterBLL data)
+        {
+            try
+            {
+                var lst = new List<filterBLL>();
+                SqlParameter[] p = new SqlParameter[1];
+                p[0] = new SqlParameter("@Category", data.Category == "" ? null : data.Category);                
+                _ds = (new DBHelper().GetDatasetFromSP)("sp_filterCategory_Web", p);
+
+
+                if (_ds != null)
+                {
+                    if (_ds.Tables.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_ds.Tables[0])).ToObject<List<filterBLL>>();
+                    }
+                }
+
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public List<filterBLL> GetAll()
+        {
+            try
+            {
+                var lst = new List<filterBLL>();
+                _dt = (new DBHelper().GetTableFromSP)("sp_itemList");
+                if (_dt != null)
+                {
+                    if (_dt.Rows.Count > 0)
+                    {
+                        lst = JArray.Parse(Newtonsoft.Json.JsonConvert.SerializeObject(_dt)).ToObject<List<filterBLL>>();
+                        //lst = _dt.DataTableToList<itemBLL>();
+                    }
+                }
+                return lst;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

@@ -130,28 +130,24 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
-                @*<ul class="product-nav nav nav-pills" id="pills-tab" role="tablist">
-                        @foreach (var item in ViewBag.Category)
-                        {
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>
-                            </li>
-
-                        }
-                    </ul>*@
+                
                 <ul class="product-nav nav nav-pills justify-content-center" id="pills-tab" role="tablist">
                     @foreach (var item in ViewBag.Category)
-                    {
-                        <!--<li class="nav-item" role="presentation">
-                        <label><input type="checkbox" name="Category" value="@item.CategoryID"><img src="~/assets/img/category/1.png" alt="img">@item.Name</label>-->
-                        @*<button class="nav-link active" id="pills-ramen-tab" data-bs-toggle="pill" data-bs-target="#pills-ramen" type="button" role="tab" aria-controls="pills-ramen" aria-selected="true"><img src="~/assets/img/category/1.png" alt="img">@item.Name</button>*@
-                        <!--</li>-->
+                    {                        
                         <li>
                             <label class="btn btn-warning btn-rounded form-check-label colr btncategory" style="margin:0px 10px 0 0  !important;">
                                 <input type="checkbox" name="Category" id="a" value="@item.CategoryID" class="form-check-input checkbox" autocomplete="off"> @item.Name
-                                <i><img src="~/assets/img/category/1.png" alt="img" width="40px"></i>
-                            </label>
+                                @*@if (@item.Image != null)
+        {
+            <i><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name" style="width:40px;"></i>
+        }
+        else
+        {*@
+                                <i><img src="~/assets/img/category/categoryNA.png" style="width:40px;height:40px;border-radius:30px;"></i>
+                                @*}*@
 
+
+                            </label>
                         </li>
 
                     }
@@ -161,36 +157,21 @@
         <div class="tab-content" id="pills-tabContent">
         </div>
         <div class="tab-pane fade show active" id="pills-ramen" role="tabpanel" aria-labelledby="pills-ramen-tab">
-            <div class="row justify-content-center">
-                @*<div class="section-title text-center">
-                        <h3 class="sub-title">Our signature</h3>
-                        <h2 class="title">Delicious Deals for Delicious Meals</h2>
-                    </div>*@
+            <div class="row justify-content-center">             
+
                 @foreach (var item in ViewBag.BestProduct)
                 {
                     <div class="col-lg-3 col-md-6">
                         <div class="single-item-wrap">
                             <div class="thumb">
-                                @*<a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>*@
                                 <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">
-                                    <img src="https://themefie.com/html/foodka/assets/img/product/pizza/1.png" alt="@item.Name">
+                                    <img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name">
                                 </a>
-                                <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
+                                <a class="fav-btn" onclick="addtoWishlist(@item.ItemID, '@item.Name', '@item.Image',@item.Price,1); toast('Item Added to wishlist', 1); return false; "><i class="ri-heart-line"></i></a>
                             </div>
                             <div class="wrap-details">
                                 <h5><a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">@item.Name</a></h5>
                                 <div class="wrap-footer">
-                                    @*<div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-
-                                        </div>*@
                                     <h6 class="price">Rs.@item.Price</h6>
                                 </div>
                             </div>

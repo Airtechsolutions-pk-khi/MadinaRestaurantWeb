@@ -27,5 +27,17 @@ namespace MadinaRestaurant.Models.Service
             }
         }
 
+        public List<filterBLL> GetAllCategory(filterBLL filter)
+        {
+            try
+            {
+                return _service.GetAllCat(filter);
+            }
+            catch (Exception ex)
+            {
+                return new List<filterBLL>();
+            }
+        }
+
     }
 }

@@ -2,9 +2,9 @@
     ShowText();
     topheadcart();
     cartitem();
-    //GetWishListItems();
+    GetWishListItems();
     StockActiveColor();
-    headertext();
+    //headertext();
     //CountDownTimer();
     var Currency;
     var Tags;
@@ -435,20 +435,22 @@ function getCities() {
         return "No City Selected";
 }
 //Wishlist
-function addtoWishlist(ItemID, Title, Image, Price, Instock, Qty) {
-
+function addtoWishlist(ItemID, Name, Image, Price, Qty) {
+    debugger
     var arrTemp = [];
     arrTemp = getWishlistLS();
-    arrTemp.push({ ItemID: ItemID, Title: Title, Image: Image, Price: Price, Instock: Instock, Qty: Qty, Key: Math.floor((Math.random() * 1000) + 1) });
+    arrTemp.push({ ItemID: ItemID, Name: Name, Image: Image, Price: Price, Qty: Qty, Key: Math.floor((Math.random() * 1000) + 1) });
     setWishlistLS(arrTemp);
 }
 function setWishlistLS(arr) {
+    debugger
     var getWishlistItem = localStorage.getItem("_Wishlistitems");
-    if (getWishlistItem != null) {
+    //if (getWishlistItem != null) {
         localStorage.setItem("_Wishlistitems", JSON.stringify(arr));
-    }
+    //}
 }
 function getWishlistLS() {
+    debugger
     var getWishlistItem = localStorage.getItem("_Wishlistitems");
     if (getWishlistItem != null && getWishlistItem != "")
         return JSON.parse(getWishlistItem);
@@ -456,52 +458,55 @@ function getWishlistLS() {
         return JSON.parse("[]");
 }
 function removeWishlistitem(ele) {
-
+    debugger
     var chkLS = getWishlistLS();
 
     chkLS.splice(chkLS.filter(obj => obj.Key === ele), 1);
     setWishlistLS(chkLS);
-    //GetWishListItems();
+    GetWishListItems();
 }
 
-//function GetWishListItems() {
-//    var currency = localStorage.getItem("currency");
-//    var total = 0;
-//    var chkLSWishlist = localStorage.getItem("_Wishlistitems");
-//    var data = JSON.parse(chkLSWishlist);
-//    var html = '';
-//    var totalPrice = 0;
-//    var totalQty = 0;
+function GetWishListItems() {
+     
+    var currency = localStorage.getItem("currency");
+    var total = 0;
+    var chkLSWishlist = localStorage.getItem("_Wishlistitems");
+    var data = JSON.parse(chkLSWishlist);
+    var html = '';
+    var totalPrice = 0;
+    var totalQty = 0;
 
-//    for (var i = 0; i < data.length; i++) {
-//        totalQty += Number(data[i].Qty);
-//        totalPrice += data[i].Price;
-//        html += '<tr>'
-//        if (data[i].Image == "" || data[i].Image == null) {
-//            html += '<td class="plantmore-product-thumbnail"><a href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '"><img class="wishlist-img" src="/Content/assets/images/NA.png" alt=""></a></td>'
-//        }
-//        else {
-//            html += '<td class="plantmore-product-thumbnail"><a href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '"><img class="wishlist-img" src="http://almadinarest-001-site2.mysitepanel.net/' + data[i].Image + '" alt=""></a></td>'
-//        }
+    for (var i = 0; i < data.length; i++) {
+        totalQty += Number(data[i].Qty);
+        totalPrice += data[i].Price;
+        html += '<tr>'
+        if (data[i].Image == "" || data[i].Image == null) {
+            html += '<td class="plantmore-product-thumbnail"><a href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '"><img class="wishlist-img" src="/Content/assets/images/NA.png" alt=""></a></td>'
+        }
+        else {
+            html += '<td class="plantmore-product-thumbnail"><a href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '"><img class="wishlist-img" src="http://almadinarest-001-site2.mysitepanel.net/' + data[i].Image + '" alt=""></a></td>'
+        }
 
-//        html += '<td class="plantmore-product-name"><a href="#">' + data[i].Title + '</a></td>'
-//            + '<td class="plantmore-product-price"><span class="currency-text mx-0">' + currency + ' ' + data[i].Price.toFixed(2) + '</span></td>'
-//            + '<td class="plantmore-product-stock-status"><span class="stockcheck">' + data[i].Instock + '</span></td>'
-//            + '<td class="plantmore-product-add-cart"><a class="btn btn-default btn-small" href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '">Buy Now</a></td>'
-//            //+ "<td class='plantmore-product-add-cart'><a href='#' class='addItemLS ' onclick='addtocart("+data[i].ItemID+","+data[i].Title+"','"+ data[i].Image +"',"+ data[i].Price +",1);toast('Item Added to Cart', 1); return false;'>add to cart</a></td>"
-//            + '<td class="plantmore-product-remove"><button class="bg-transparent border-0 text-danger" onclick="removeWishlistitem(' + data[i].Key + '); return false;"><i class="h5 ion-trash-a mb-0"></i></a></td>'
-//            + '</tr>'
-
-//    }
-//    if (data.length > 0) {
-//        $(".wishlist-items").html(html);
-//    }
-//    else {
-//        $("#ytdTable").html("You donot have any item in favourites ");
-//    }
+        html += '<td class="plantmore-product-name"><a href="#">' + data[i].Name + '</a></td>'
+            + '<td class="plantmore-product-price"><span class="currency-text mx-0">' + currency + ' ' + data[i].Price.toFixed(2) + '</span></td>'
+            
+            + '<td class="plantmore-product-add-cart"><a class="btn btn-warning btn-small" href="/Product/ProductDetails?ItemID=' + data[i].ItemID + '">Add to Cart</a></td>'
+            //+ "<td class='plantmore-product-add-cart'><a href='#' class='addItemLS ' onclick='addtocart("+data[i].ItemID+","+data[i].Title+"','"+ data[i].Image +"',"+ data[i].Price +",1);toast('Item Added to Cart', 1); return false;'>add to cart</a></td>"
+            + '<td class="plantmore-product-remove"><button class="bg-transparent border-0 text-danger" onclick="removeWishlistitem(' + data[i].Key + '); return false;"><i class="h4 ri-delete-bin-fill mb-0"></i></a></td>'
+            + '</tr>'
 
 
-//};
+    }
+   
+    if (data.length > 0) {
+        $(".wishlist-items").html(html);
+    }
+    else {
+        $("#ytdTable").html("You donot have any item in favourites ");
+    }
+
+
+};
 
 function StockActiveColor() {
 

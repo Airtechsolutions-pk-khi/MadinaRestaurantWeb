@@ -13,14 +13,22 @@
             text-align: center;
             padding-left: 20px;
         }
+
         #a {
             display: none;
         }
+
         .single-item-wrap .thumb a {
             position: relative;
             top: 18px;
             right: 27px;
             font-size: 24px;
+        }
+        label:hover {
+            color: #fff;
+            background-color: yellowgreen;
+            border-radius:40px;
+            width:230px;
         }
     </style>
 </head>
@@ -60,11 +68,11 @@
                     </div>
                     <div class="col-sm-6 align-self-center pb-4">
                         @*<select class="single-select float-sm-end">
-                            <option>Default sorting</option>
-                            <option value="asc">Pizza</option>
-                            <option value="desc">Burger</option>
-                            <option value="pop">Ramen</option>
-                        </select>*@
+                                <option>Default sorting</option>
+                                <option value="asc">Pizza</option>
+                                <option value="desc">Burger</option>
+                                <option value="pop">Ramen</option>
+                            </select>*@
                     </div>
                     <div class="tab-content" id="pills-tabContent">
 
@@ -75,10 +83,11 @@
                         <div class="col-md-4 hideDiv">
                             <div class="single-item-wrap">
                                 <div class="thumb">
-                                   
-                                    <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
+
+                                    <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></a>
                                     <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
                                 </div>
+                                
                                 <div class="wrap-details">
                                     <h5><a href="single-product.html">@item.Name</a></h5>
                                     <div class="wrap-footer">
@@ -97,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="btn-area">
-                                   
+
                                     <a class="btn btn-secondary" href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">Add to Cart</a>
                                 </div>
                             </div>
@@ -110,101 +119,85 @@
                     <div class="widget widget_search">
                         <form class="search-form">
                             <div class="form-group">
-                                @*<input type="text" class="filterOn" id="txtSearch" onchange="txtSearch" placeholder="Search your itmes">*@
+
                                 <input type="text" placeholder="Search your itmes">
                             </div>
                             <button class="submit-btn" type="submit"><i class="ri-search-line"></i></button>
-                            </form>
-</div>
+                        </form>
+                    </div>
                     <div class="widget widget_categories style-2">
                         <h4 class="widget-title" style="color:var(--heading-color);">Categories</h4>
                         <ul>
                             @foreach (var item in ViewBag.Category)
                             {
                                 <li>
-                                    <label class=" form-check-label"><i><img src="~/assets/img/category/1.png" alt="img"></i>
+                                    <label class=" form-check-label">
+                                        <i><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></i>
                                         <input type="checkbox" name="Category" id="a" value="@item.CategoryID" class="form-check-input " autocomplete="off"> @item.Name
-                                        
+
                                     </label>
                                 </li>
 
-                                @*<li><a href="#"><img src="~/assets/img/category/1.png" alt="img"> Ramen <span>(5)</span></a></li>*@
                             }
 
                         </ul>
                     </div>
-                    @*<div class="widget widget_filter">
-                        <h4 class="widget-title">Filter by Price</h4>
-                        <div class="side-bar-range">
-                            <div id="slider-range"></div>
-                            <div class="row g-0">
-                                <div class="col-lg-6 align-self-center">
-                                    <a class="btn btn-base" href="#">Filter</a>
-                                </div>
-                                <div class="col-lg-6 align-self-center">
-                                    <p>
-                                        Price:
-                                        <input type="text" id="amount" readonly>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
+                  
                     <div class="widget widget-recent-post style-2">
-                        <h4 class="widget-title"style="color:var(--heading-color);">Today’s Special</h4>
+                        <h4 class="widget-title" style="color:var(--heading-color);">Today’s Special</h4>
                         <ul>
                             @foreach (var item in ViewBag.TodaysSpecial)
                             {
 
 
-                            <li>
-                                <div class="media">
-                                    <div class="media-left">
-                                        <img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="Image" style="width:90px;">
+                                <li>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="Image" style="width:80px;height:80px;">
+                                        </div>
+                                        <div class="media-body">
+                                            <h6 class="title"><a href="#">@item.Name</a></h6>
+                                            @*<div class="rating">
+                                                    4.9
+                                                    <span class="rating-inner">
+                                                        <i class="ri-star-fill ps-0"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-fill"></i>
+                                                        <i class="ri-star-half-line pe-0"></i>
+                                                    </span>
+                                                    (462)
+                                                </div>*@
+                                            <h6 class="price">Rs. @item.Price</h6>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h6 class="title"><a href="#">@item.Name</a></h6>
-                                        @*<div class="rating">
-                                            4.9
-                                            <span class="rating-inner">
-                                                <i class="ri-star-fill ps-0"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-fill"></i>
-                                                <i class="ri-star-half-line pe-0"></i>
-                                            </span>
-                                            (462)
-                                        </div>*@
-                                        <h6 class="price">Rs. @item.Price</h6>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
                             }
-                            
+
                         </ul>
                     </div>
-                     
+
                 </div>
             </div>
             @*<div class="col-12">
-                <nav class="text-end">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="ri-arrow-left-s-line"></i>
-                            </a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                <i class="ri-arrow-right-s-line"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>*@
+                    <nav class="text-end">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="ri-arrow-left-s-line"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="ri-arrow-right-s-line"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>*@
         </div>
     </div>
 </section>
@@ -239,7 +232,7 @@
     //        alert(Searchtxt)
     //        ProductFilter(Category.join(),Searchtxt)
     //    }
-   
+
 
     function ProductFilter(Category, Searchtxt) {
         $("#divLoader").show();

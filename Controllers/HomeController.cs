@@ -51,7 +51,7 @@ namespace MadinaRestaurant.Controllers
         }
         public JsonResult Filter(filterBLL data)
         {
-            ViewBag.shopList = filterService.GetAll(data);
+            ViewBag.shopList = filterService.GetAllCategory(data);
             return Json(new { data = ViewBag.shopList }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Products(List<filterBLL> Products)
@@ -71,27 +71,14 @@ namespace MadinaRestaurant.Controllers
                 if (TempData.Count > 1)
                 {
                     if (TempData["CategoryIDs"].ToString() != "" ||
-                    TempData["SubCategoryIDs"].ToString() != "" ||
-                    TempData["ColorIDs"].ToString() != "" ||
-                    TempData["MinPrice"].ToString() != "" ||
-                    TempData["MaxPrice"].ToString() != "" ||
-                    TempData["Searchtext"].ToString() != "" ||
-                    TempData["SortID"].ToString() != "5")
+                    
+                    TempData["Searchtext"].ToString() != "" )
+                    
                     {
                         filterBLL data = new filterBLL();
-                        data.Category = TempData["CategoryIDs"].ToString();
-                        data.SubCategory = TempData["SubCategoryIDs"].ToString();
-                        data.Color = TempData["ColorIDs"].ToString();
-                        data.MinPrice = TempData["MinPrice"].ToString();
-                        data.MaxPrice = TempData["MaxPrice"].ToString();
-                        data.Searchtxt = TempData["Searchtext"].ToString();
-                        data.SortID = Convert.ToInt32(TempData["SortID"].ToString());
-                        if (data.MinPrice == "" || data.MaxPrice == "")
-                        {
-                            data.MinPrice = "AED0";
-                            data.MaxPrice = "AED30000";
-                        }
-                        ViewBag.shopList = filterService.GetAll(data);
+                        data.Category = TempData["CategoryIDs"].ToString();                       
+                        data.Searchtxt = TempData["Searchtext"].ToString();                                              
+                        ViewBag.shopList = filterService.GetAllCategory(data);
                         if (ViewBag.shopList.Count < 1)
                         {
                             ViewBag.Message = "No Product Found";
@@ -99,13 +86,7 @@ namespace MadinaRestaurant.Controllers
                     }
                 }
                 else
-                {
-                    /*string category = "";
-                    if (TempData["Category"] != null)
-                    {
-                        category = TempData["Category"].ToString();
-                    }
-                    ViewBag.shopList = _service.GetAll(category);*/
+                {                    
                     ViewBag.shopList = "";
                     ViewBag.Message = "No Product Found";
 

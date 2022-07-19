@@ -26,7 +26,7 @@
         </div>
         @foreach (var item in ViewBag.shopList)
         {
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-item-wrap">
                     <div class="thumb">
                        
@@ -36,7 +36,7 @@
                         <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
                     </div>
                     <div class="wrap-details">
-                        <h5><a href="single-product.html">@item.ItemName</a></h5>
+                        <h5><a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })">@item.Name</a></h5>
                         <div class="wrap-footer">
                             @*<div class="rating">
                                 4.9

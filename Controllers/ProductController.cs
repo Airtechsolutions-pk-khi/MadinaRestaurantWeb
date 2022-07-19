@@ -41,5 +41,10 @@ namespace MadinaRestaurant.Controllers
             }
             
         }
+
+        public ActionResult Wishlist()
+        {           
+            return View();
+        }
     }
 }

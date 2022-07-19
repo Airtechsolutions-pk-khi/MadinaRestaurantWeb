@@ -135,6 +135,7 @@
     <Content Include="assets\img\category\4.png" />
     <Content Include="assets\img\category\5.png" />
     <Content Include="assets\img\category\6.png" />
+    <Content Include="assets\img\category\categoryNA.png" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\fevicon.png" />
     <Content Include="assets\img\home-2\about\1.png" />
@@ -345,6 +346,8 @@
     <Content Include="Views\Account\Login_Register.cshtml" />
     <Content Include="Views\Order\OrderComplete.cshtml" />
     <Content Include="Views\Home\_Products.cshtml" />
+    <Content Include="Views\Product\Wishlist.cshtml" />
+    <Content Include="Views\Shared\_Products.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

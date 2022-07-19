@@ -105,7 +105,7 @@
                     </ul>
                 </div>
                 <div class="logo">
-                    <a class="main-logo" href="home-1.html"><img src="~/assets/img/logo.png" alt="img"></a>
+                    <a class="main-logo" href="@Url.Action("Index","Home")"><img src="~/assets/img/logo.png" alt="img"></a>
                 </div>
                 <div class="nav-right-part nav-right-part-mobile">
                     <ul>
@@ -126,6 +126,10 @@
                     <ul>
                         <li>
                             <a class="search" href="#"><i class="ri-search-line"></i></a>
+                        </li>
+                        <li>
+                            <a class="fav-btn" href="/Product/Wishlist"><i class="ri-heart-line"></i></a>
+                            
                         </li>
                         <li class="phone-contact">
                             <i class="ri-phone-fill float-start"></i>

@@ -31,7 +31,7 @@
                     <div class="thumb">
                        
                             @*<a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>*@
-                            <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="~/assets/img/product/pizza/1.png" alt="@item.Name"></a>
+                            <a href="@Url.Action("ProductDetails", "Product", new { ItemID = item.ItemID })"><img src="@System.Configuration.ConfigurationManager.AppSettings["Image"].ToString()@item.Image" alt="@item.Name"></a>
  
                         <a class="fav-btn" href="#"><i class="ri-heart-line"></i></a>
                     </div>
